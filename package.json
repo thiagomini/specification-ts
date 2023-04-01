@@ -15,17 +15,34 @@
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
     "fix:lint": "eslint src --ext .ts --fix",
-    "test": "run-s build test:*",
+    "test": "ava",
     "test:lint": "eslint src --ext .ts",
-    "test:prettier": "prettier \"src/**/*.ts\" --list-different"
+    "test:prettier": "prettier \"src/**/*.ts\" --list-different",
+    "test:unit": "node --loader tsx --test \"src/specifications/and-specification.test.ts\""
   },
   "engines": {
     "node": ">=19.8"
   },
+  "ava": {
+    "failFast": true,
+    "timeout": "60s",
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register",
+      "tsconfig-paths/register"
+    ],
+    "nodeArguments": [
+      "--experimental-specifier-resolution=node"
+    ]
+  },
   "devDependencies": {
-    "@ava/typescript": "^1.1.1",
+    "@ava/typescript": "^4.0.0",
+    "@swc/register": "^0.1.10",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
+    "ava": "^5.2.0",
     "codecov": "^3.5.0",
     "cspell": "^4.1.0",
     "cz-conventional-changelog": "^3.3.0",
@@ -37,6 +54,8 @@
     "open-cli": "^7.2.0",
     "prettier": "^2.8.7",
     "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "tsx": "^3.12.6",
     "typescript": "^5.0.3"
   },
   "files": [
