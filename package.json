@@ -35,6 +35,9 @@
     ],
     "nodeArguments": [
       "--experimental-specifier-resolution=node"
+    ],
+    "files": [
+      "src/**/*.test.ts"
     ]
   },
   "devDependencies": {

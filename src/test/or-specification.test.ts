@@ -1,17 +1,8 @@
 import test from 'ava';
-import { AbstractSpecification } from './specifications';
-
-class AlwaysTrueSpecification extends AbstractSpecification {
-  public isSatisfiedBy(): boolean {
-    return true;
-  }
-}
-
-class AlwaysFalseSpecification extends AbstractSpecification {
-  public isSatisfiedBy(): boolean {
-    return false;
-  }
-}
+import {
+  AlwaysFalseSpecification,
+  AlwaysTrueSpecification,
+} from './specification.stub';
 
 test('true OR true = true', (t) => {
   // Arrange
