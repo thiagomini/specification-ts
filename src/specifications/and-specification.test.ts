@@ -7,7 +7,13 @@ class AlwaysTrueSpecification extends AbstractSpecification {
   }
 }
 
-test('is satisfied when both candidates are satisfied', (t) => {
+class AlwaysFalseSpecification extends AbstractSpecification {
+  public isSatisfiedBy(): boolean {
+    return false;
+  }
+}
+
+test('true + true = true', (t) => {
   // Arrange
   const first = new AlwaysTrueSpecification();
   const second = new AlwaysTrueSpecification();
@@ -18,4 +24,17 @@ test('is satisfied when both candidates are satisfied', (t) => {
 
   // Assert
   t.true(result.isSatisfiedBy(someCandidate));
+});
+
+test('true + false = false', (t) => {
+  // Arrange
+  const first = new AlwaysTrueSpecification();
+  const second = new AlwaysFalseSpecification();
+  const candidate = {};
+
+  // Act
+  const result = first.and(second);
+
+  // Assert
+  t.false(result.isSatisfiedBy(candidate));
 });
