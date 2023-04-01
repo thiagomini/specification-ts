@@ -14,6 +14,10 @@ export abstract class AbstractSpecification<Candidate = unknown>
   public or(specification: Specification<Candidate>): Specification<Candidate> {
     return new OrSpecification(this, specification);
   }
+
+  public not(): Specification<Candidate> {
+    return new NotSpecification(this);
+  }
 }
 
 export class AndSpecification extends AbstractSpecification {
@@ -43,5 +47,15 @@ export class OrSpecification extends AbstractSpecification {
     return (
       this.first.isSatisfiedBy(candidate) || this.other.isSatisfiedBy(candidate)
     );
+  }
+}
+
+export class NotSpecification extends AbstractSpecification {
+  constructor(public readonly specification: Specification) {
+    super();
+  }
+
+  public isSatisfiedBy(candidate: unknown): boolean {
+    return !this.specification.isSatisfiedBy(candidate);
   }
 }
