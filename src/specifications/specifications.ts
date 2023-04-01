@@ -39,7 +39,9 @@ export class OrSpecification extends AbstractSpecification {
     super();
   }
 
-  public isSatisfiedBy(_candidate: unknown): boolean {
-    return true;
+  public isSatisfiedBy(candidate: unknown): boolean {
+    return (
+      this.first.isSatisfiedBy(candidate) || this.other.isSatisfiedBy(candidate)
+    );
   }
 }

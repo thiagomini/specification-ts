@@ -38,3 +38,16 @@ test('true OR false = true', (t) => {
   // Assert
   t.true(result.isSatisfiedBy(someCandidate));
 });
+
+test('false OR false = false', (t) => {
+  // Arrange
+  const first = new AlwaysFalseSpecification();
+  const second = new AlwaysFalseSpecification();
+  const someCandidate = {};
+
+  // Act
+  const result = first.or(second);
+
+  // Assert
+  t.false(result.isSatisfiedBy(someCandidate));
+});
