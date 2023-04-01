@@ -13,7 +13,7 @@ class AlwaysFalseSpecification extends AbstractSpecification {
   }
 }
 
-test('true + true = true', (t) => {
+test('true AND true = true', (t) => {
   // Arrange
   const first = new AlwaysTrueSpecification();
   const second = new AlwaysTrueSpecification();
@@ -26,7 +26,7 @@ test('true + true = true', (t) => {
   t.true(result.isSatisfiedBy(someCandidate));
 });
 
-test('true + false = false', (t) => {
+test('true AND false = false', (t) => {
   // Arrange
   const first = new AlwaysTrueSpecification();
   const second = new AlwaysFalseSpecification();
@@ -39,7 +39,7 @@ test('true + false = false', (t) => {
   t.false(result.isSatisfiedBy(candidate));
 });
 
-test('false + false = false', (t) => {
+test('false AND false = false', (t) => {
   // Arrange
   const first = new AlwaysFalseSpecification();
   const second = new AlwaysFalseSpecification();
