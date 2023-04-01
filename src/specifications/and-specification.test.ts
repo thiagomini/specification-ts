@@ -38,3 +38,16 @@ test('true + false = false', (t) => {
   // Assert
   t.false(result.isSatisfiedBy(candidate));
 });
+
+test('false + false = false', (t) => {
+  // Arrange
+  const first = new AlwaysFalseSpecification();
+  const second = new AlwaysFalseSpecification();
+  const candidate = {};
+
+  // Act
+  const result = first.and(second);
+
+  // Assert
+  t.false(result.isSatisfiedBy(candidate));
+});
